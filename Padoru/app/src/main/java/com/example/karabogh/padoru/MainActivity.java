@@ -1,146 +1,145 @@
 package com.example.karabogh.padoru;
 
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridLayout;
+import android.widget.GridView;
 
-import static java.lang.Thread.sleep;
+import java.io.IOException;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private Button padoru;
-    private Button omae;
-    private Button explosion;
-    private Button bluffes;
-    private Button ouf;
-    private Button niconi;
-    private Button fuck;
-    private Button over9000;
-    private Button tuturu;
-    private Button victoire;
-    private Button couilles;
-    private MediaPlayer test;
+    private ArrayList<Son> tabSon = new ArrayList<>();
+    private MediaPlayer lastSon;
+    private int lastPos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        padoru = (Button)  findViewById(R.id.padoru);
-        omae = (Button) findViewById(R.id.omae);
-        explosion = (Button)  findViewById(R.id.explosion);
-        bluffes =(Button) findViewById(R.id.bluffes);
-        ouf =(Button) findViewById(R.id.ouf);
-        niconi =(Button) findViewById(R.id.niconi);
-        fuck =(Button) findViewById(R.id.fuck);
-        tuturu =(Button) findViewById(R.id.tuturu);
-        over9000 =(Button) findViewById(R.id.over900);
-        victoire =(Button) findViewById(R.id.victoire);
-        couilles =(Button) findViewById(R.id.couilles);
+        tabSon = prepareSon();
+        lastSon = tabSon.get(0).getSon();
 
-        test = MediaPlayer.create(getApplicationContext(),R.raw.ouf);
+        GridView gridview = (GridView) findViewById(R.id.gridView);
+        SonAdapteur flowerAdapter = new SonAdapteur(this, tabSon);
+        gridview.setAdapter(flowerAdapter);
+        gridview.setOnItemClickListener(this);
+    }
 
-        padoru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.padoru);
-                test.start();
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        if(lastSon.isPlaying()) {
+            lastSon.stop();
+            try {
+                lastSon.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+        }
+        lastSon = tabSon.get(position).getSon();
+        lastSon.start();
+    }
 
-        omae.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.omae);
-                test.start();
-            }
-        });
+    //Insertion des sons : mettre son dans dossier raw puis faire comme ci dessous
+    public ArrayList<Son> prepareSon(){
+        ArrayList<Son> dataSon = new ArrayList<>();
+        Son son;
 
-        explosion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.explosion);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Padoru");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.padoru));
+        dataSon.add(son);
 
-        bluffes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.bluffes);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Omae");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.omae));
+        dataSon.add(son);
 
-        niconi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.niconi);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Explosion");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.explosion));
+        dataSon.add(son);
 
-        tuturu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.tuturu);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Tu bluffes");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.bluffes));
+        dataSon.add(son);
 
-        ouf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test = MediaPlayer.create(getApplicationContext(),R.raw.ouf);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Oof");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.ouf));
+        dataSon.add(son);
 
-        over9000.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.over9000);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Nico nico");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.niconi));
+        dataSon.add(son);
 
-        fuck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.fuck);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Fuck");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.fuck));
+        dataSon.add(son);
 
-        victoire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.victory);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Tuturu");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.tuturu));
+        dataSon.add(son);
 
-        couilles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                test.stop();
-                test = MediaPlayer.create(getApplicationContext(),R.raw.couilles);
-                test.start();
-            }
-        });
+        son = new Son();
+        son.setNomSon("Over 9000");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.over9000));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Victoire");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.victory));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("On s'en bat ...");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.couilles));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Piqette Jack");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.piquette));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Eddy Malou");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.eddy));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Illuminati");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.illuminati));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Triste");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.triste));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Surpise mother");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.surprise));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Deja vu");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.dejavu));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Nyan cat");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.nyan));
+        dataSon.add(son);
+
+        return dataSon;
     }
 }

@@ -8,48 +8,14 @@
     android:background="@drawable/padoru"
     tools:context=".MainActivity">
 
-  <GridLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:columnCount="2">
-
-      <Button
-          android:text="Paduro"
-          android:id="@+id/padoru"/>
-      <Button
-          android:text="Omae wa mou shindeiru"
-          android:id="@+id/omae"/>
-      <Button
-          android:text="Explosion"
-          android:id="@+id/explosion"/>
-      <Button
-          android:text="Tu bluffes Martoni"
-          android:id="@+id/bluffes"/>
-      <Button
-          android:text="Ouf"
-          android:id="@+id/ouf"/>
-      <Button
-          android:text="It over 9000"
-          android:id="@+id/over900"/>
-      <Button
-          android:text="Nico nico ni"
-          android:id="@+id/niconi"/>
-      <Button
-          android:text="Fuck fuck fuck"
-          android:id="@+id/fuck"/>
-      <Button
-          android:text="Tuturu"
-          android:id="@+id/tuturu"/>
-      <Button
-          android:text="Victoire"
-          android:id="@+id/victoire"/>
-      <Button
-          android:text="On s'en bat les ..."
-          android:id="@+id/couilles"/>
-
-  </GridLayout>
-
-
-
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:gravity="center"
+        />
 
 </android.support.constraint.ConstraintLayout>
