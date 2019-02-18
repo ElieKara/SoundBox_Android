@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         }
         lastSon = tabSon.get(position).getSon();
+
         lastSon.start();
     }
 
@@ -139,6 +140,92 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         son.setNomSon("Nyan cat");
         son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.nyan));
         dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Pas souffrir OK");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.passouffrir));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Philippe !");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.philippe));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Echec");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.echec));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("WTF");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.wtf));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Tambour");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.tambour));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("America");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.america));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Meuh");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.meuh));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("C'est heure duel");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.duel));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Umu");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.umu));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Finish him");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.finish));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("See you again");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.seeyou));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("To be continued");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.tobe));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Zelda récompense");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.zelda));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("It's time to stop");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.timestop));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("URSS");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.urss));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Oui oui");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.oui));
+        dataSon.add(son);
+
+        son = new Son();
+        son.setNomSon("Pokemon");
+        son.setSon(MediaPlayer.create(getApplicationContext(),R.raw.pokemon));
+        dataSon.add(son);
+
 
         return dataSon;
     }
